@@ -30,7 +30,7 @@ The test data can be found at: [pml-testing.csv](https://d396qusza40orc.cloudfro
 
 ## Loading the necessary packages
 
-```{r}
+```{r, message = FALSE}
 library(dplyr)
 library(caret)
 library(randomForest)
@@ -39,7 +39,7 @@ library(knitr)
 
 ## Dowloading the Data
 
-```{r}
+```{r, message = FALSE}
 # Define the URLs for the datasets
 training_url <- "https://d396qusza40orc.cloudfront.net/predmachlearn/pml-training.csv"
 testing_url <- "https://d396qusza40orc.cloudfront.net/predmachlearn/pml-testing.csv"
@@ -115,7 +115,7 @@ final_test <- final_test %>%
 training_set <- na.omit(training_set)
 ```
 
-##Data Splitting
+## Data Splitting
 
 We split the training data into two sets: 70% for training and 30% for testing.
 
@@ -159,6 +159,11 @@ accuracy <- conf_matrix$overall['Accuracy']
 kable(as.data.frame(conf_matrix$table), caption = "Confusion Matrix", format = "markdown")
 kable(as.data.frame(accuracy), caption = "Model Accuracy", format = "markdown")
 ```
+
+## Expected out-of-sample error
+
+The expected out-of-sample error is estimated at `r 1 - accuracy`, which is derived from the predictions made against the cross-validation set. Given that our model achieves an accuracy exceeding 99% on the cross-validation data, we can anticipate that very few, if any, test samples will be misclassified.
+
 
 ## Predictions on the Final Test Set
 

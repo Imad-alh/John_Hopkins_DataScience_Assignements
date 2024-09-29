@@ -386,30 +386,10 @@ following links:</p>
 <h1>Data Preprocessing</h1>
 <div id="loading-the-necessary-packages" class="section level2">
 <h2>Loading the necessary packages</h2>
-<pre class="r"><code>library(dplyr)</code></pre>
-<pre><code>## 
-## Attachement du package : &#39;dplyr&#39;</code></pre>
-<pre><code>## Les objets suivants sont masqués depuis &#39;package:stats&#39;:
-## 
-##     filter, lag</code></pre>
-<pre><code>## Les objets suivants sont masqués depuis &#39;package:base&#39;:
-## 
-##     intersect, setdiff, setequal, union</code></pre>
-<pre class="r"><code>library(caret)</code></pre>
-<pre><code>## Le chargement a nécessité le package : ggplot2</code></pre>
-<pre><code>## Le chargement a nécessité le package : lattice</code></pre>
-<pre class="r"><code>library(randomForest)</code></pre>
-<pre><code>## randomForest 4.7-1.2</code></pre>
-<pre><code>## Type rfNews() to see new features/changes/bug fixes.</code></pre>
-<pre><code>## 
-## Attachement du package : &#39;randomForest&#39;</code></pre>
-<pre><code>## L&#39;objet suivant est masqué depuis &#39;package:ggplot2&#39;:
-## 
-##     margin</code></pre>
-<pre><code>## L&#39;objet suivant est masqué depuis &#39;package:dplyr&#39;:
-## 
-##     combine</code></pre>
-<pre class="r"><code>library(knitr)</code></pre>
+<pre class="r"><code>library(dplyr)
+library(caret)
+library(randomForest)
+library(knitr)</code></pre>
 </div>
 <div id="dowloading-the-data" class="section level2">
 <h2>Dowloading the Data</h2>
@@ -481,7 +461,9 @@ final_test &lt;- final_test %&gt;%
 
 # Remove rows with any NA values
 training_set &lt;- na.omit(training_set)</code></pre>
-<p>##Data Splitting</p>
+</div>
+<div id="data-splitting" class="section level2">
+<h2>Data Splitting</h2>
 <p>We split the training data into two sets: 70% for training and 30%
 for testing.</p>
 <pre class="r"><code># Split the data into training and test sets (70% train, 30% test)
@@ -670,6 +652,14 @@ kable(as.data.frame(conf_matrix$table), caption = &quot;Confusion Matrix&quot;, 
 </tr>
 </tbody>
 </table>
+</div>
+<div id="expected-out-of-sample-error" class="section level2">
+<h2>Expected out-of-sample error</h2>
+<p>The expected out-of-sample error is estimated at 0.0020391, which is
+derived from the predictions made against the cross-validation set.
+Given that our model achieves an accuracy exceeding 99% on the
+cross-validation data, we can anticipate that very few, if any, test
+samples will be misclassified.</p>
 </div>
 <div id="predictions-on-the-final-test-set" class="section level2">
 <h2>Predictions on the Final Test Set</h2>
